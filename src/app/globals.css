@@ -45,6 +45,13 @@
   --text-caption--letter-spacing: 0.15em;
 }
 
+/* Hide system cursor on fine pointer devices */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
 /* Base */
 html {
   scroll-behavior: smooth;

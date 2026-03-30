@@ -3,6 +3,8 @@ import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import ScrollProgress from "@/components/layout/ScrollProgress";
+import CustomCursor from "@/components/layout/CustomCursor";
+import GrainOverlay from "@/components/ui/GrainOverlay";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -40,6 +42,8 @@ export default function RootLayout({
       className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable}`}
     >
       <body>
+        <CustomCursor />
+        <GrainOverlay />
         <ScrollProgress />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

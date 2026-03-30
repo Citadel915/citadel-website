@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
@@ -48,15 +47,13 @@ export default function Navbar() {
           style={{ height: "80px", alignItems: "center" }}
         >
           {/* Logo */}
-          <Link href="/" data-cursor="hover">
-            <Image
-              src="/logo.png"
-              alt="Citadel by Gold Standard"
-              width={100}
-              height={130}
-              style={{ height: "72px", width: "auto", mixBlendMode: "screen" }}
-              priority
-            />
+          <Link href="/" className="flex flex-col" data-cursor="hover">
+            <span className="font-display text-[18px] tracking-[0.35em] uppercase text-citadel-text leading-none">
+              CITADEL
+            </span>
+            <span className="font-body text-[10px] tracking-[0.25em] uppercase text-citadel-gold mt-0.5">
+              by Gold Standard
+            </span>
           </Link>
 
           {/* Desktop nav */}

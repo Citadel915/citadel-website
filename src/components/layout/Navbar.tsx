@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
@@ -42,17 +43,28 @@ export default function Navbar() {
           borderBottom: scrolled ? "1px solid #222222" : "1px solid transparent",
         }}
       >
-        <div className="flex items-center justify-between px-8 md:px-12 lg:px-16"
+        <div
+          className="flex items-center justify-between px-8 md:px-12 lg:px-16"
           style={{ height: "80px" }}
         >
           {/* Logo */}
-          <Link href="/" className="flex flex-col" data-cursor="hover">
-            <span className="font-display text-[15px] tracking-[0.35em] uppercase text-citadel-text leading-none">
-              CITADEL
-            </span>
-            <span className="font-body text-[9px] tracking-[0.25em] uppercase text-citadel-gold mt-0.5">
-              by Gold Standard
-            </span>
+          <Link href="/" className="flex items-center gap-3" data-cursor="hover">
+            <Image
+              src="/logo.png"
+              alt="Citadel logo"
+              width={44}
+              height={44}
+              className="object-contain"
+              priority
+            />
+            <div className="flex flex-col">
+              <span className="font-display text-[18px] tracking-[0.35em] uppercase text-citadel-text leading-none">
+                CITADEL
+              </span>
+              <span className="font-body text-[10px] tracking-[0.25em] uppercase text-citadel-gold mt-0.5">
+                by Gold Standard
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}
@@ -77,27 +89,28 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — large hit area, bigger lines */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="lg:hidden flex flex-col justify-center gap-[6px] w-8 h-8"
+            className="lg:hidden flex flex-col justify-center items-center gap-[7px]"
+            style={{ width: "44px", height: "44px" }}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             <span
               style={{
                 display: "block",
-                width: "24px",
-                height: "1.5px",
+                width: "28px",
+                height: "2px",
                 backgroundColor: "#EDEDEB",
                 transition: "transform 0.3s ease, opacity 0.3s ease",
-                transform: menuOpen ? "translateY(7.5px) rotate(45deg)" : "none",
+                transform: menuOpen ? "translateY(9px) rotate(45deg)" : "none",
               }}
             />
             <span
               style={{
                 display: "block",
-                width: "24px",
-                height: "1.5px",
+                width: "28px",
+                height: "2px",
                 backgroundColor: "#EDEDEB",
                 transition: "opacity 0.3s ease",
                 opacity: menuOpen ? 0 : 1,
@@ -106,11 +119,11 @@ export default function Navbar() {
             <span
               style={{
                 display: "block",
-                width: "24px",
-                height: "1.5px",
+                width: "28px",
+                height: "2px",
                 backgroundColor: "#EDEDEB",
                 transition: "transform 0.3s ease, opacity 0.3s ease",
-                transform: menuOpen ? "translateY(-7.5px) rotate(-45deg)" : "none",
+                transform: menuOpen ? "translateY(-9px) rotate(-45deg)" : "none",
               }}
             />
           </button>

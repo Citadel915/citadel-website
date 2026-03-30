@@ -48,36 +48,15 @@ export default function Navbar() {
           style={{ height: "80px", alignItems: "center" }}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3" data-cursor="hover" style={{ transform: "translateY(-2px)" }}>
-            {/* Crop to emblem only — PNG is portrait (emblem top, text bottom) */}
-            <div style={{ width: 46, height: 46, overflow: "hidden", flexShrink: 0, position: "relative" }}>
-              <Image
-                src="/logo.png"
-                alt="Citadel emblem"
-                width={200}
-                height={260}
-                style={{
-                  width: "auto",
-                  height: "130px",
-                  objectFit: "cover",
-                  objectPosition: "top center",
-                  position: "absolute",
-                  top: 0,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  mixBlendMode: "screen",
-                }}
-                priority
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display text-[18px] tracking-[0.35em] uppercase text-citadel-text leading-none">
-                CITADEL
-              </span>
-              <span className="font-body text-[10px] tracking-[0.25em] uppercase text-citadel-gold mt-0.5">
-                by Gold Standard
-              </span>
-            </div>
+          <Link href="/" data-cursor="hover">
+            <Image
+              src="/logo.png"
+              alt="Citadel by Gold Standard"
+              width={100}
+              height={130}
+              style={{ height: "72px", width: "auto", mixBlendMode: "screen" }}
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

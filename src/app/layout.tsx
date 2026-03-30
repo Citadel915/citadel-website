@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import CustomCursor from "@/components/layout/CustomCursor";
 import GrainOverlay from "@/components/ui/GrainOverlay";
+import Navbar from "@/components/layout/Navbar";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -45,6 +46,7 @@ export default function RootLayout({
         <CustomCursor />
         <GrainOverlay />
         <ScrollProgress />
+        <Navbar />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

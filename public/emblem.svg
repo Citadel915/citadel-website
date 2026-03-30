@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Outer octagon (double-line ring — two close octagons) -->
+  <polygon
+    points="35,4 65,4 96,35 96,65 65,96 35,96 4,65 4,35"
+    stroke="#C9A96E"
+    stroke-width="2"
+    fill="none"
+  />
+  <polygon
+    points="37,9 63,9 91,37 91,63 63,91 37,91 9,63 9,37"
+    stroke="#C9A96E"
+    stroke-width="1.2"
+    fill="none"
+  />
+
+  <!-- Shield body -->
+  <path
+    d="M50 25 L70 33 L70 56 C70 68 50 78 50 78 C50 78 30 68 30 56 L30 33 Z"
+    stroke="#C9A96E"
+    stroke-width="1.8"
+    fill="none"
+    stroke-linejoin="round"
+  />
+
+  <!-- Castle battlements (3 merlons) -->
+  <rect x="40" y="25" width="5.5" height="7" fill="#C9A96E" rx="0.5" />
+  <rect x="47.25" y="25" width="5.5" height="7" fill="#C9A96E" rx="0.5" />
+  <rect x="54.5" y="25" width="5.5" height="7" fill="#C9A96E" rx="0.5" />
+
+  <!-- Gate arch -->
+  <path
+    d="M44 74 L44 62 Q50 56 56 62 L56 74"
+    stroke="#C9A96E"
+    stroke-width="1.6"
+    fill="none"
+    stroke-linecap="round"
+  />
+</svg>

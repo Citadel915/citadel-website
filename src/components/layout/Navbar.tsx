@@ -48,19 +48,23 @@ export default function Navbar() {
           style={{ height: "80px", alignItems: "center" }}
         >
           {/* Logo */}
-          <Link href="/" data-cursor="hover" className="block">
+          <Link href="/" className="flex items-center gap-3" data-cursor="hover">
             <Image
-              src="/logo.png"
-              alt="Citadel by Gold Standard"
-              width={120}
-              height={120}
-              className="object-contain w-auto"
-              style={{
-                height: "56px",
-                mixBlendMode: "screen",
-              }}
+              src="/emblem.svg"
+              alt="Citadel emblem"
+              width={40}
+              height={40}
+              className="object-contain shrink-0"
               priority
             />
+            <div className="flex flex-col">
+              <span className="font-display text-[18px] tracking-[0.35em] uppercase text-citadel-text leading-none">
+                CITADEL
+              </span>
+              <span className="font-body text-[10px] tracking-[0.25em] uppercase text-citadel-gold mt-0.5">
+                by Gold Standard
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}

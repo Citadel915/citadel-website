@@ -2,24 +2,15 @@
 
 import { useState } from "react";
 import Preloader from "@/components/home/Preloader";
-import IntroSequence from "@/components/home/IntroSequence";
 
 export default function HomePage() {
-  const [preloaderDone, setPreloaderDone] = useState(false);
-  const [introDone,     setIntroDone]     = useState(false);
+  const [done, setDone] = useState(false);
 
   return (
     <>
-      {!preloaderDone && (
-        <Preloader onComplete={() => setPreloaderDone(true)} />
-      )}
+      {!done && <Preloader onComplete={() => setDone(true)} />}
 
-      <IntroSequence
-        isReady={preloaderDone}
-        onComplete={() => setIntroDone(true)}
-      />
-
-      {introDone && (
+      {done && (
         <main className="min-h-screen flex items-center justify-center">
           <p className="font-body text-[13px] tracking-[0.2em] uppercase text-citadel-text-muted">
             Homepage content will go here

@@ -47,8 +47,8 @@
 
 /* Hide system cursor on fine pointer devices */
 @media (pointer: fine) {
-  body {
-    cursor: none;
+  *, *::before, *::after {
+    cursor: none !important;
   }
 }
 

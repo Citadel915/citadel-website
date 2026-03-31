@@ -11,7 +11,6 @@ interface PreloaderProps {
 
 export default function Preloader({ onComplete }: PreloaderProps) {
   const [visible, setVisible] = useState(true);
-  const hasRun = useRef(false);
 
   // Preloader refs
   const preloaderRef = useRef<HTMLDivElement>(null);
@@ -24,19 +23,21 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   const subRef    = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Strict mode guard — only run once
-    if (hasRun.current) return;
-    hasRun.current = true;
+    let tl: gsap.core.Timeline | null = null;
 
-    const preloader = preloaderRef.current;
-    const progress  = progressRef.current;
-    const intro     = introRef.current;
-    const line      = lineRef.current;
-    const title     = titleRef.current;
-    const sub       = subRef.current;
-    if (!preloader || !progress || !intro || !line || !title || !sub) return;
+    // setTimeout(0) is the correct StrictMode fix:
+    // StrictMode unmounts immediately → clearTimeout fires → nothing starts.
+    // The second (real) mount queues a fresh timeout and runs cleanly.
+    const timer = setTimeout(() => {
+      const preloader = preloaderRef.current;
+      const progress  = progressRef.current;
+      const intro     = introRef.current;
+      const line      = lineRef.current;
+      const title     = titleRef.current;
+      const sub       = subRef.current;
+      if (!preloader || !progress || !intro || !line || !title || !sub) return;
 
-    const skipIntro = !!sessionStorage.getItem(STORAGE_KEY);
+      const skipIntro = !!sessionStorage.getItem(STORAGE_KEY);
 
     // Set intro initial states (hidden until needed)
     gsap.set(intro,  { autoAlpha: 0 });
@@ -45,12 +46,13 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     gsap.set(sub,    { autoAlpha: 0, y: 6 });
 
     const finish = () => {
+      window.scrollTo(0, 0);
       setVisible(false);
       onComplete();
     };
 
     // ── Phase 1: Preloader ──────────────────────────────
-    const tl = gsap.timeline();
+    tl = gsap.timeline();
 
     tl.to(progress, {
       width: "80%",
@@ -143,7 +145,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       });
     });
 
-    return () => { tl.kill(); };
+    }, 0); // end setTimeout
+
+    return () => {
+      clearTimeout(timer);
+      tl?.kill();
+    };
   }, [onComplete]);
 
   if (!visible) return null;

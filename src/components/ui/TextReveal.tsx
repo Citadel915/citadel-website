@@ -53,11 +53,9 @@ export default function TextReveal({
     if (triggerOnScroll) {
       const trigger = ScrollTrigger.create({
         trigger: container,
-        start: "top 88%",
-        end: "bottom 10%",
+        start: "top 85%",
+        once: true,
         onEnter: playAnim,
-        onLeaveBack: resetAnim,
-        onEnterBack: playAnim,
       });
       return () => trigger.kill();
     } else {

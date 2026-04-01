@@ -84,6 +84,7 @@ export default function Navbar() {
             className="lg:hidden flex flex-col justify-center items-center gap-[7px]"
             style={{ width: "44px", height: "44px" }}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
+            data-cursor="hover"
           >
             <span
               style={{
